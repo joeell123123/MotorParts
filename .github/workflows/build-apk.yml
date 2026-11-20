@@ -32,7 +32,7 @@ jobs:
 
       - name: Install Capacitor & generate Android project
         run: |
-          rm -f capacitor.config.ts
+          rm -f capacitor.config.ts capacitor.config.cjs
           cat << 'EOF' > capacitor.config.js
           /** @type {import('@capacitor/cli').CapacitorConfig} */
           const config = {
@@ -44,7 +44,7 @@ jobs:
             }
           };
 
-          module.exports = config;
+          export default config;
           EOF
           npm install --legacy-peer-deps @capacitor/core @capacitor/cli @capacitor/android
           npx cap add android --config capacitor.config.js
