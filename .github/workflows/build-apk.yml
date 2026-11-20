@@ -32,9 +32,23 @@ jobs:
 
       - name: Install Capacitor & generate Android project
         run: |
+          rm -f capacitor.config.ts
+          cat << 'EOF' > capacitor.config.js
+          /** @type {import('@capacitor/cli').CapacitorConfig} */
+          const config = {
+            appId: 'com.joeell123123.motorparts',
+            appName: 'MotorParts',
+            webDir: 'dist',
+            server: {
+              androidScheme: 'https'
+            }
+          };
+
+          module.exports = config;
+          EOF
           npm install --legacy-peer-deps @capacitor/core @capacitor/cli @capacitor/android
-          npx cap add android
-          npx cap sync android
+          npx cap add android --config capacitor.config.js
+          npx cap sync android --config capacitor.config.js
 
       - name: Build Debug APK
         run: |
