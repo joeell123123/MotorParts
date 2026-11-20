@@ -1,0 +1,6 @@
+{
+  "name": "MotoSpec",
+  "description": "Precision motorcycle parts search and fitment catalog covering Philippine commuter bikes, scooters, naked bikes, and superbikes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
